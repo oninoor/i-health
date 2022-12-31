@@ -1,12 +1,13 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
 // Load the system's routing file first, so that the app and ENVIRONMENT
 // can override as needed.
-if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
-{
+if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
 	require SYSTEMPATH . 'Config/Routes.php';
 }
 
@@ -32,6 +33,20 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 
 // Authentication Routing ---- Removed 
+
+
+// Patient Routes
+
+// Auth 
+$routes->get('/auth/reset-password', 'Auth::show_reset_password');
+
+
+// Auth Patient
+$routes->get('/auth/patient-login', 'AuthPatient::index');
+$routes->get('/auth/patient-register', 'AuthPatient::show_patient_register');
+
+// Main Page Patient
+$routes->get('/patient/dashboard', 'PatientDashboard::index');
 
 
 $routes->get('/', 'Home::index');
@@ -169,7 +184,6 @@ $routes->get('maps-leaflet', 'Home::show_maps_leaflet');
  * You will have access to the $routes object within that file without
  * needing to reload it.
  */
-if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php'))
-{
+if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
 	require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
