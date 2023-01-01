@@ -1,0 +1,10 @@
+---
+deployment:
+  task:
+    - export DEPLOYPATH=/home/flae9220/public_html
+    - bin/cp/ composer.json $DEPLOYPATH
+    - bin/cp/ composer.lock $DEPLOYPATH
+    - bin/cp/ -R app $DEPLOYPATH
+    - bin/cp/ -R public $DEPLOYPATH
+    - bin/cp/ -R system $DEPLOYPATH
+    - bin/cp/ -R writable $DEPLOYPATH
