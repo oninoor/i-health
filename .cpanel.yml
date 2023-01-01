@@ -4,6 +4,9 @@ deployment:
     - export DEPLOYPATH=/home/flae9220/public_html
     - bin/cp/ composer.json $DEPLOYPATH
     - bin/cp/ composer.lock $DEPLOYPATH
+    - bin/cp/ env $DEPLOYPATH
+    - bin/cp/ LICENSE $DEPLOYPATH
+    - bin/cp/ spark $DEPLOYPATH
     - bin/cp/ -R app $DEPLOYPATH
     - bin/cp/ -R public $DEPLOYPATH
     - bin/cp/ -R system $DEPLOYPATH
