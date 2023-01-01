@@ -8,7 +8,7 @@ class PatientDashboard extends BaseController
   {
     $data = [
       'title_meta' => view('partials/title-meta', ['title' => 'Dashboard']),
-      'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'Telemedicine', 'li_2' => 'Dashboard'])
+      'page_title' => view('partials/page-title', ['title' => 'Dashboard', 'li_1' => 'I-Health', 'li_2' => 'Dashboard'])
     ];
     return view('patient-dashboard', $data);
   }

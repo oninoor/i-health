@@ -45,6 +45,7 @@ $routes->get('/auth/reset-password', 'Auth::show_reset_password');
 $routes->get('/auth/patient-login', 'AuthPatient::index');
 $routes->get('/auth/patient-register', 'AuthPatient::show_patient_register');
 
+
 // Main Page Patient
 $routes->get('/patient/dashboard', 'PatientDashboard::index');
 

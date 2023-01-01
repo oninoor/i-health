@@ -1,0 +1,61 @@
+/* All */
+.btn-bg-custom {
+  background: #8fc945;
+  font-weight: 600;
+  color: white;
+  border-radius: 12px;
+  transition: all 0.4s;
+}
+
+.btn-bg-custom:hover {
+  background: #81a653 !important;
+  color: white;
+  transition: all 0.4s;
+}
+
+.font-bold {
+  font-weight: 800;
+}
+
+.font-medium {
+  font-weight: 600;
+}
+
+#datatable_paginate > ul > li.paginate_button.page-item.active > a {
+  background-color: #2a7f54 !important;
+  border-color: #2a7f54 !important;
+}
+
+#datatable > tbody > tr > td.dtr-control.sorting_1::before {
+  background-color: #2a7f54;
+}
+/* End All */
+
+/* DASHBOARD */
+.consultation-card {
+  background: #2a7f54;
+  color: white;
+  position: relative;
+}
+
+.consultation-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border: solid white 2px !important;
+  object-position: top center;
+}
+
+.consultation-detail {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.doctor-schedule img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border: solid white 2px !important;
+  object-position: top center;
+}
+/* END DASHBOARD */
