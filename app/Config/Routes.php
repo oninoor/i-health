@@ -47,10 +47,12 @@ $routes->get('/auth/patient-register', 'AuthPatient::show_patient_register');
 
 
 // Main Page Patient
+$routes->get('/', 'PatientDashboard::index');
+$routes->get('/patient', 'PatientDashboard::index');
 $routes->get('/patient/dashboard', 'PatientDashboard::index');
 
 
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
 $routes->get('index-dark', 'Home::show_index_dark');
 $routes->get('index-rtl', 'Home::show_index_rtl');
