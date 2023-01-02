@@ -48,7 +48,7 @@
                             <div class="card-body">
                                 <h2 class="card-title mb-3 text-white">Sesi Konsultasi Anda</h2>
                                 <div class="d-flex flex-row gap-3 align-items-center mb-4">
-                                    <img src="/assets/images/users/dr-teguh-s.jfif" alt="Dokter Teguh" class="rounded-circle img-fluid">
+                                    <img src="/assets/images/users/dr-teguh-s.jfif" alt="Dokter Teguh" class="rounded-circle img-fluid doctor-thumb">
                                     <div>
                                         <span class="font-medium d-block">dr. Teguh Santoso, Sp. OG.</span>
                                         <span class="font-size-13">RSD Kalisat Jember</span>
@@ -71,6 +71,7 @@
 
                                 <a href="javascript: void(0);" class="btn btn-bg-custom waves-effect waves-light w-100">Buka Chat</a>
                             </div>
+                            <img src="/assets/images/ornamen-doctor-card.png" class="consultation-ornament img-fluid">
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,6 @@
+<?php
+$uri = service('uri');
+?>
 <!-- ========== Left Sidebar Start ========== -->
 <div class="vertical-menu">
 
@@ -9,7 +12,8 @@
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title" data-key="t-menu"><?= lang('Files.Menu') ?></li>
 
-                <li>
+                <li <?= in_array($uri->setSilent()->getPath(), ['/', 'patient', 'patient/dashboard']) ? 'class="mm-active"' : '' ?> ?>
+                    >
                     <a href="<?= base_url('/patient/dashboard') ?>">
                         <i data-feather="grid"></i>
                         <span data-key="t-dashboard">Dashboard</span>
@@ -23,7 +27,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="apps-calendar">
+                            <a href="<?= base_url('patient/register') ?>">
                                 <span data-key="t-calendar">Daftar</span>
                             </a>
                         </li>

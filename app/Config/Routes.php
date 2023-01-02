@@ -17,7 +17,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('PatientDashboard');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -47,9 +47,9 @@ $routes->get('/auth/patient-register', 'AuthPatient::show_patient_register');
 
 
 // Main Page Patient
-$routes->get('/', 'PatientDashboard::index');
 $routes->get('/patient', 'PatientDashboard::index');
 $routes->get('/patient/dashboard', 'PatientDashboard::index');
+$routes->get('/patient/register', 'PatientConsultation::index');
 
 
 // $routes->get('/', 'Home::index');
