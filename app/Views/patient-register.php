@@ -65,7 +65,7 @@
                                     </div><!-- End Row -->
 
                                     <div class="d-flex flex-row gap-2 justify-content-end align-items-center">
-                                        <button type="submit" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</button>
+                                        <button type="submit" class="btn btn-bg-custom waves-effect waves-light">Cari Dokter</button>
                                         <button type="submit" style="font-weight: 600; border-radius: 12px;" class="btn btn-light waves-effect waves-light px-4">Clear</button>
                                     </div>
                                 </form>
@@ -89,7 +89,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="#" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 
@@ -104,7 +104,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="#" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 
@@ -119,7 +119,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="#" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 
@@ -134,7 +134,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="#" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 

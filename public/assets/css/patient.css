@@ -83,3 +83,20 @@
   object-fit: cover;
 }
 /* END REGISTER */
+
+/* APPOINTMENT */
+.doctor-info .img-border {
+  border: solid #8fc945 1px !important;
+  width: 120px;
+  height: 120px;
+}
+.doctor-info img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}
+
+.pick-time input[type="radio"]:checked {
+  background: #2a7f54 !important;
+}
+/* END APPOINTMENT */

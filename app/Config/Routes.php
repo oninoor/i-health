@@ -50,6 +50,7 @@ $routes->get('/auth/patient-register', 'AuthPatient::show_patient_register');
 $routes->get('/patient', 'PatientDashboard::index');
 $routes->get('/patient/dashboard', 'PatientDashboard::index');
 $routes->get('/patient/register', 'PatientConsultation::index');
+$routes->get('/patient/appointment', 'PatientConsultation::show_appointment');
 
 
 // $routes->get('/', 'Home::index');
