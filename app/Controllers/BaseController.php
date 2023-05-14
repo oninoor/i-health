@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -21,13 +22,25 @@ use Psr\Log\LoggerInterface;
 class BaseController extends Controller
 {
 	/**
+	 * Instance of the main Request object.
+	 *
+	 * @var IncomingRequest
+	 */
+	protected $request; // NOTICE THIS LINE AND THE COMMENT ABOVE IT
+
+	/**
 	 * An array of helpers to be loaded automatically upon
 	 * class instantiation. These helpers will be available
 	 * to all other controllers that extend BaseController.
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = [
+		'notificationAndRedirect',
+		'validateRequestData',
+		'authCheck',
+		'cookie'
+	];
 
 	/**
 	 * Constructor.
@@ -46,7 +59,7 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
 		$session = \Config\Services::session();
-      	$language = \Config\Services::language();
-      	$language->setLocale($session->lang);
+		$language = \Config\Services::language();
+		$language->setLocale($session->lang);
 	}
 }

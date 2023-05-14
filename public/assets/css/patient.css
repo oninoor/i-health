@@ -1,4 +1,13 @@
 /* All */
+.text-green {
+  color: #2a7f54;
+}
+
+.bg-green {
+  background-color: #2a7f54;
+  color: white;
+}
+
 .btn-bg-custom {
   background: #8fc945;
   font-weight: 600;
@@ -99,4 +108,5 @@
 .pick-time input[type="radio"]:checked {
   background: #2a7f54 !important;
 }
+
 /* END APPOINTMENT */

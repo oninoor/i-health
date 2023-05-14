@@ -89,7 +89,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/booking') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 
@@ -104,7 +104,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/booking') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 
@@ -119,7 +119,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/booking') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 
@@ -134,7 +134,7 @@
                                 <span class="font-size-14">RSD Kalisat Jember</span>
                             </div>
 
-                            <a href="<?= base_url('patient/appointment') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
+                            <a href="<?= base_url('patient/booking') ?>" class="btn btn-bg-custom waves-effect waves-light">Konsultasi</a>
                         </div>
                     </div><!-- end col -->
 

@@ -32,7 +32,7 @@ $uri = service('uri');
                         </li>
 
                         <li>
-                            <a href="apps-chat">
+                            <a href="<?= base_url('patient/my-appointments') ?>">
                                 <span data-key="t-chat">Konsultasi Saya</span>
                             </a>
                         </li>

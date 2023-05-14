@@ -13,10 +13,12 @@
 
     <!-- Import -->
     <?= $this->include('partials/head-css'); ?>
+
 </head>
 
 <!-- Body -->
 <?= $this->include('partials/body'); ?>
+
 
 <div style='min-height:100vh;' class='container-fluid p-4 d-flex justify-content-center align-items-center bg-success'>
     <div style="max-width: 444px; border-radius: 12px;" class="card p-2 w-100">
@@ -26,15 +28,34 @@
             <p class="card-text text-center mb-4">Pembuatan akun hanya tersedia untuk pasien lama.</p>
 
             <!-- Form -->
-            <form action="" class="custom-form pt-2">
+            <form action="<?= base_url('/auth/patient-register') ?>" method="POST" class="custom-form pt-2">
+                <?= csrf_field(); ?>
+
                 <div class="mb-3">
                     <label class="form-label">No Rekam Medis</label>
-                    <input type="text" class="form-control" id="norm" name="norm" placeholder="No Rekam Medis">
+                    <input type="text" class="form-control <?= ($validation->hasError('no_rm')) ? 'is-invalid' : '' ?>" id="no_rm" name="no_rm" placeholder="No Rekam Medis">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('no_rm'); ?>
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">NIK</label>
-                    <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK">
+                    <input type="text" class="form-control <?= ($validation->hasError('nik')) ? 'is-invalid' : '' ?>" id="nik" name="nik" placeholder="NIK">
+                    <div class="invalid-feedback">
+                        <?= $validation->getError('nik'); ?>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <div class="input-group auth-pass-inputgroup">
+                        <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : '' ?>" placeholder="Masukkan password" aria-label="Password" aria-describedby="password-addon" name="password">
+                        <button class="btn btn-light ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('password'); ?>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="mb-3">
@@ -44,14 +65,21 @@
 
             <p class="card-text text-center mb-3">Sudah punya akun?</p>
             <div class="mb-3">
-                <a href="/auth/patient-login" style="border-radius: 12px; font-weight: 800;" class="btn btn-outline-light w-100 waves-effect waves-light" type="submit">Masuk</a>
+                <a href="/auth" style="border-radius: 12px; font-weight: 800;" class="btn btn-outline-light w-100 waves-effect waves-light" type="button">Masuk</a>
             </div>
         </div>
     </div>
 </div>
 
+
 <!-- JAVASCRIPT -->
 <?= $this->include('partials/vendor-scripts'); ?>
+<script src="/assets/js/pages/pass-addon.init.js"></script>
+
+<!-- Notification -->
+<script src="/assets/libs/alertifyjs/build/alertify.min.js"></script>
+<script src="/assets/js/pages/notification.init.js"></script>
+
 </body>
 
 </html>

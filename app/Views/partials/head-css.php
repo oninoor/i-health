@@ -1,3 +1,9 @@
+<!-- alertifyjs Css -->
+<link href="/assets/libs/alertifyjs/build/css/alertify.min.css" rel="stylesheet" type="text/css" />
+
+<!-- alertifyjs default themes  Css -->
+<link href="/assets/libs/alertifyjs/build/css/themes/default.min.css" rel="stylesheet" type="text/css" />
+
 <!-- preloader css -->
 <link rel="stylesheet" href="/assets/css/preloader.min.css" type="text/css" />
 

@@ -38,20 +38,33 @@ $routes->setAutoRoute(true);
 // Patient Routes
 
 // Auth 
-$routes->get('/auth/reset-password', 'Auth::show_reset_password');
+$routes->get('/auth/recover-pw', 'Auth::index');
+$routes->get('/auth/reset-password/(:any)', 'Auth::showResetPassword/$1');
+
+$routes->post('/auth/recover-pw', 'Auth::handleRecoveryPassword');
+$routes->post('/auth/reset-password', 'Auth::handleResetPassword');
 
 
 // Auth Patient
-$routes->get('/auth/patient-login', 'AuthPatient::index');
-$routes->get('/auth/patient-register', 'AuthPatient::show_patient_register');
+$routes->get('/auth', 'AuthPatient::index', ['filter' => 'authpatient']);
+$routes->get('/auth/patient-register', 'AuthPatient::showPatientRegister', ['filter' => 'authpatient']);
+$routes->get('/logout/patient', 'AuthPatient::handleLogout');
+
+$routes->post('/auth/patient-register', 'AuthPatient::handlePatientRegistration', ['filter' => 'authpatient']);
+$routes->post('/auth', 'AuthPatient::handlePatientLogin', ['filter' => 'authpatient']);
 
 
 // Main Page Patient
-$routes->get('/patient', 'PatientDashboard::index');
-$routes->get('/patient/dashboard', 'PatientDashboard::index');
-$routes->get('/patient/register', 'PatientConsultation::index');
-$routes->get('/patient/appointment', 'PatientConsultation::show_appointment');
+$routes->get('/patient', 'PatientDashboard::index', ['filter' => 'authpatient']);
+$routes->get('/patient/dashboard', 'PatientDashboard::index', ['filter' => 'authpatient']);
+$routes->get('/patient/register', 'PatientConsultation::index', ['filter' => 'authpatient']);
+$routes->get('/patient/booking', 'PatientConsultation::showBooking', ['filter' => 'authpatient']);
+$routes->get('/patient/payment', 'PatientConsultation::showPayment', ['filter' => 'authpatient']);
+$routes->get('/patient/my-appointments', 'PatientConsultation::showAppointment', ['filter' => 'authpatient']);
+$routes->get('/patient/appointment-detail', 'PatientConsultation::showDetailAppointment', ['filter' => 'authpatient']);
 
+// Errors
+$routes->get('/error/403', 'Errors::index');
 
 // $routes->get('/', 'Home::index');
 $routes->get('/home', 'Home::index');
