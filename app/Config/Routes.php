@@ -53,6 +53,14 @@ $routes->get('/logout/patient', 'AuthPatient::handleLogout');
 $routes->post('/auth/patient-register', 'AuthPatient::handlePatientRegistration', ['filter' => 'authpatient']);
 $routes->post('/auth', 'AuthPatient::handlePatientLogin', ['filter' => 'authpatient']);
 
+// Admin
+$routes->get('/admin/patients', 'AdminPatient::index');
+$routes->get('/admin/add-patient', 'AdminPatient::showAddPatient');
+$routes->get('/admin/patient/(:num)', 'AdminPatient::showPatientDetail/$1');
+
+$routes->post('/admin/get-data-patients', 'AdminPatient::getDataPatients');
+$routes->post('/admin/add-patient', 'AdminPatient::handleAddPatient');
+
 
 // Main Page Patient
 $routes->get('/patient', 'PatientDashboard::index', ['filter' => 'authpatient']);

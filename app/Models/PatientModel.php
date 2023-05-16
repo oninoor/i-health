@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use Exception;
 
 class PatientModel extends Model
 {
@@ -39,73 +40,6 @@ class PatientModel extends Model
     'created_at',
     'updated_at'
   ];
-
-  protected $validationRules = [
-    'nik'             =>  'required|numeric|exact_length[16]|is_unique[patients.nik,patient_id,{$patient_id}]',
-    'no_rm'           => 'required|numeric|exact_length[8]',
-    'name'            => 'required|min_length[3]',
-    'gender'          => 'required|in_list[Laki-laki,Perempuan]',
-    'birth_date'      => 'required|valid_date',
-    'address'         => 'required|min_length[10]',
-    'phone'           => 'required|min_length[10]',
-    'marital_status'  => 'required|in_list[Belum Menikah,Menikah,Duda,Janda]',
-    'religion'        => 'required|in_list[Islam,Kristen,Katholik,Hindu,Buddha,Konghucu,Penganut Kepercayaan,Lainnya]',
-    'email'           => 'required|valid_email|is_unique[patients.email,patient_id,{$patient_id}]',
-    'password'        => 'required|min_length[8]',
-  ];
-  protected $validationMessages = [
-    'nik' => [
-      'required' => 'NIK harus diisi.',
-      'numeric' => 'NIK harus berupa angka.',
-      'exact_length' => 'NIK harus terdiri dari 16 angka.',
-      'is_unique' => 'NIK sudah terdaftar.',
-    ],
-    'no_rm' => [
-      'required' => 'Nomor rekam medis harus diisi.',
-      'numeric' => 'Nomor rekam medis harus berupa angka.',
-      'exact_length' => 'Nomor rekam medis terdiri dari 8 angka.'
-    ],
-    'name' => [
-      'required' => 'Nama pasien harus diisi.',
-      'min_length' => 'Nama pasien minimal terdiri dari 3 karakter.'
-    ],
-    'gender' => [
-      'required' => 'Jenis kelamin harus diisi.',
-      'in_list' => 'Jenis kelamin harus diisi dengan Laki-laki atau Perempuan.'
-    ],
-    'birth_date' => [
-      'required' => 'Tanggal lahir harus diisi.',
-      'valid_date' => 'Tanggal lahir harus valid.'
-    ],
-    'address' => [
-      'required' => 'Alamat harus diisi.',
-      'min_length' => 'Alamat minimal terdiri dari 10 karakter.'
-    ],
-    'phone' => [
-      'required' => 'Nomor telepon harus diisi.',
-      'numeric' => 'Nomor telepon harus berupa angka.',
-      'min_length' => 'Nomor telepon minimal terdiri dari 10 angka.'
-    ],
-    'marital_status' => [
-      'required' => 'Status perkawinan harus diisi.',
-      'in_list' => 'Status perkawinan harus diisi dengan pilihan yang tersedia.'
-    ],
-    'religion' => [
-      'required' => 'Agama harus diisi.',
-      'in_list' => 'Agama harus diisi dengan pilihan yang tersedia.'
-    ],
-    'email' => [
-      'required' => 'Email harus diisi.',
-      'valid_email' => 'Email tidak valid.',
-      'is_unique' => 'Email sudah terdaftar.',
-    ],
-    'password' => [
-      'required' => 'Password harus diisi.',
-      'min_length' => 'Password minimal terdiri dari 8 karakter.',
-    ]
-  ];
-  protected $skipValidation       = false;
-  protected $cleanValidationRules = true;
 
   public function findPatientById($patient_id)
   {
@@ -194,6 +128,61 @@ class PatientModel extends Model
 
     if ($patient->active != 'active') {
       throw new \Exception("Tidak dapat login, akun anda belum terdaftar atau diblokir");
+    }
+  }
+
+  public function getDatatableData($start, $length, $searchValue, $columnOrder, $orderDirection)
+  {
+
+    $builder = $this->table('patients');
+    if (!empty($searchValue)) {
+      $builder->like('no_rm', $searchValue);
+      $builder->orLike('nik', $searchValue);
+      $builder->orLike('name', $searchValue);
+    }
+    $this->getDataTableOrder($builder, $columnOrder, $orderDirection);
+    $builder->limit($length, $start);
+    $patients = $builder->get()->getResultArray();
+
+    return $patients;
+  }
+
+  private function getDataTableOrder($builder, $columnOrder, $orderDirection)
+  {
+    if ($columnOrder == 1) {
+      return $builder->orderBy('no_rm', $orderDirection);
+    } elseif ($columnOrder == 2) {
+      return $builder->orderBy('name', $orderDirection);
+    } elseif ($columnOrder == 3) {
+      return $builder->orderBy('nik', $orderDirection);
+    } else {
+      $builder->orderBy('patient_id', $orderDirection);
+    }
+  }
+
+  public function getDatatableTotal($searchValue)
+  {
+    $builder = $this->table('patients');
+    if (!empty($searchValue)) {
+      $builder->like('no_rm', $searchValue);
+      $builder->orLike('nik', $searchValue);
+      $builder->orLike('name', $searchValue);
+    }
+    return $builder->countAllResults();
+  }
+
+  public function insertPatient($data)
+  {
+    try {
+      $data['no_rm'] = $this->generateNoRm();
+
+      $this->save($data);
+
+      if ($this->affectedRows() < 1) {
+        throw new \Exception('Data pendaftaran gagal disimpan.');
+      }
+    } catch (Exception $e) {
+      throw new Exception($e->getMessage());
     }
   }
 }

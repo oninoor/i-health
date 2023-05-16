@@ -32,7 +32,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">No Rekam Medis</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('no_rm')) ? 'is-invalid' : '' ?>" id="no_rm" name="no_rm" placeholder="No Rekam Medis">
+                    <input type="text" class="form-control <?= ($validation->hasError('no_rm')) ? 'is-invalid' : '' ?>" id="no_rm" name="no_rm" placeholder="No Rekam Medis" autofocus>
                     <div class="invalid-feedback">
                         <?= $validation->getError('no_rm'); ?>
                     </div>

@@ -45,8 +45,8 @@ class Patients extends Migration
 				'constraint' => 20,
 			],
 			'marital_status' => [
-				'type'       => 'CHAR',
-				'constraint' => 12,
+				'type'       => 'ENUM("Belum Menikah","Menikah","Duda","Janda","Lainnya")',
+				'default' => 'Lainnya',
 			],
 			'religion' => [
 				'type' => 'ENUM("Islam","Kristen","Katholik","Hindu","Buddha","Konghucu","Penganut Kepercayaan","Lainnya")',

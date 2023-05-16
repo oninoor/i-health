@@ -102,4 +102,68 @@ class Validation
 			'matches' 	=> 'Konfirmasi password tidak sesuai dengan password yang dimasukkan'
 		]
 	];
+
+	public $addNewPatientvalidation = [
+		'nik'             => 'required|numeric|exact_length[16]|is_unique[patients.nik,patient_id,{patient_id}]',
+		'name'            => 'required|min_length[3]',
+		'gender'          => 'required|in_list[Laki-laki,Perempuan]',
+		'birth_date'      => 'required|valid_date',
+		'marital_status'  => 'required|in_list[Belum Menikah,Menikah,Duda,Janda]',
+		'mobile_phone'    => 'required|min_length[10]',
+		'religion'        => 'required|in_list[Islam,Kristen,Katholik,Hindu,Buddha,Konghucu,Penganut Kepercayaan,Lainnya]',
+		'role'        		=> 'required|in_list[patient,doctor,nurse,admin]',
+		'active'        	=> 'required|in_list[unregistered,active,blocked]',
+		'email'           => 'valid_email|is_unique[patients.email,patient_id,{patient_id}]',
+		'address'         => 'required|min_length[10]',
+	];
+	public $addNewPatientvalidation_errors = [
+		'nik' => [
+			'required' => 'NIK harus diisi.',
+			'numeric' => 'NIK harus berupa angka.',
+			'exact_length' => 'NIK harus terdiri dari 16 angka.',
+			'is_unique' => 'NIK sudah terdaftar.',
+		],
+		'name' => [
+			'required' => 'Nama pasien harus diisi.',
+			'min_length' => 'Nama pasien minimal terdiri dari 3 karakter.'
+		],
+		'gender' => [
+			'required' => 'Jenis kelamin harus diisi.',
+			'in_list' => 'Jenis kelamin harus diisi dengan Laki-laki atau Perempuan.'
+		],
+		'birth_date' => [
+			'required' => 'Tanggal lahir harus diisi.',
+			'valid_date' => 'Tanggal lahir harus valid.'
+		],
+		'marital_status' => [
+			'required' => 'Status perkawinan harus diisi.',
+			'in_list' => 'Status perkawinan harus diisi dengan pilihan yang tersedia.'
+		],
+		'mobile_phone' => [
+			'required' => 'Nomor telepon harus diisi.',
+			'numeric' => 'Nomor telepon harus berupa angka.',
+			'min_length' => 'Nomor telepon minimal terdiri dari 10 angka.'
+		],
+		'religion' => [
+			'required' => 'Agama harus diisi.',
+			'in_list' => 'Agama harus diisi dengan pilihan yang tersedia.'
+		],
+		'role' => [
+			'required' => 'Hak akses harus diisi.',
+			'in_list' => 'Hak akses harus diisi dengan pilihan yang tersedia.'
+		],
+		'active' => [
+			'required' => 'Status harus diisi.',
+			'in_list' => 'Status harus diisi dengan pilihan yang tersedia.'
+		],
+		'email' => [
+			'required' => 'Email harus diisi.',
+			'valid_email' => 'Email tidak valid.',
+			'is_unique' => 'Email sudah terdaftar.',
+		],
+		'address' => [
+			'required' => 'Alamat harus diisi.',
+			'min_length' => 'Alamat minimal terdiri dari 10 karakter.'
+		],
+	];
 }
